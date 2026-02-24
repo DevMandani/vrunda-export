@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vrunda Exporter | Premium Masala & Spices Global</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* COLOR GRADING & VARIABLES */
+        :root {
+            --primary: #0a2342;    /* Deep Navy */
+            --accent: #c5a059;     /* Metallic Gold */
+            --accent-light: #e6d5b8; 
+            --secondary: #25D366;  /* WA Green */
+            --light: #f4f7f9;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #546e7a;
+        }
+
+        /* GLOBAL RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER SECTION ===== */
+        .main-header {
+            width: 100%;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .header-container {
+            max-width: 1300px;
+            margin: auto;
+           
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .logo span {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .action-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .call-btn { background: var(--primary); }
+        .wa-btn { background: var(--secondary); }
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(rgba(10,35,66,0.85), rgba(10,35,66,0.85)),
+                        url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1350&q=80');
+            min-height: 75vh;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 10%;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-gold { background: var(--accent); color: var(--primary); }
+        .btn-white { background: var(--white); color: var(--primary); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* ===== ABOUT & QUALITY ===== */
+        .section { padding: 80px 10%; }
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        .about-text h2 { color: var(--primary); font-size: 2.5rem; margin-bottom: 20px; }
+        .about-text p { color: var(--text-muted); margin-bottom: 20px; }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .q-card {
+            background: var(--light);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent);
+        }
+        .q-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+
+        /* ===== PRODUCTS ===== */
+        .product-section { background: var(--light); text-align: center; }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .product-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .product-card h3 { color: var(--primary); margin-bottom: 15px; }
+        .select-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .select-btn:hover { background: var(--accent); color: var(--primary); }
+
+        /* ===== INQUIRY FORM ===== */
+        .form-container {
+            max-width: 700px;
+            margin: auto;
+            background: var(--white);
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .form-container h2 { text-align: center; color: var(--primary); margin-bottom: 30px; }
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            background: #fdfdfd;
+            font-size: 1rem;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .floating-wa {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 10% 20px;
+            text-align: center;
+        }
+        .footer-logo { color: var(--accent); font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                display: none; /* Mobile menu logic */
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 30px;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            nav.active { display: flex; }
+            .menu-toggle { display: block; }
+            .header-actions { display: none; }
+            .section { padding: 50px 5%; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="main-header">
+    <div class="header-container">
+        <div class="logo">
+            <img src="images/6.png" height="80px" alt="">
+        </div>
+
+        <nav id="navbar">
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#inquiry-form">Bulk Inquiry</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="tel:+918849085600" class="action-icon call-btn"><i class="fas fa-phone"></i></a>
+            <a href="https://wa.me/918849085600" class="action-icon wa-btn"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Vrunda Exporter</h1>
+    <p>Connecting the world with the finest Indian Ground Spices and Dehydrated Vegetable Powders.</p>
+    <div class="btn-group">
+        <a href="https://wa.me/918849085600" class="btn btn-gold"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+        <a href="#products" class="btn btn-white">Our Products</a>
+    </div>
+</section>
+
+<section class="section about-content" id="about">
+    <div class="about-text">
+        <h2>Premium Quality Since 2026</h2>
+        <p>Vrunda Exporter is a dedicated export house based in India, specializing in high-grade Onion, Garlic, and Chilli powders. We ensure that every shipment meets international hygiene and quality standards.</p>
+        <p>Our focus is on purity. We source raw materials directly from trusted farms and process them using modern dehydration technology to keep the natural aroma intact.</p>
+    </div>
+    <div class="quality-grid">
+        <div class="q-card">
+            <i class="fas fa-leaf"></i>
+            <h4>100% Organic</h4>
+        </div>
+        <div class="q-card">
+            <i class="fas fa-flask"></i>
+            <h4>Lab Tested</h4>
+        </div>
+        <div class="q-card">
+            <i class="fas fa-globe"></i>
+            <h4>Global Delivery</h4>
+        </div>
+    </div>
+</section>
+
+<section id="products" class="section product-section">
+    <h2 style="color:var(--primary); font-size: 2.5rem;">Our Core Collection</h2>
+    <p>Available for Bulk Export in customized packaging</p>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/3.webp" alt="Onion Powder">
+            <h3>Onion Powder</h3>
+            <button class="select-btn" onclick="selectProduct('Onion Powder')">Select for Quote</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/2.webp" alt="Red Chilli Powder">
+            <h3>Red Chilli Powder</h3>
+            <button class="select-btn" onclick="selectProduct('Red Chilli Powder')">Select for Quote</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/5.jpg" alt="Garlic Powder">
+            <h3>Garlic Powder</h3>
+            <button class="select-btn" onclick="selectProduct('Garlic Powder')">Select for Quote</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&w=300&q=80" alt="Garam Masala">
+            <h3>Garam Masala</h3>
+            <button class="select-btn" onclick="selectProduct('Garam Masala')">Select for Quote</button>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="inquiry-form">
+    <div class="form-container">
+        <h2>Global Inquiry Form</h2>
+        <form>
+            <input type="text" placeholder="Your Name / Company Name" required>
+            <input type="email" placeholder="Business Email" required>
+            <input type="text" id="product-input" placeholder="Selected Product" readonly style="border: 2px solid var(--accent); font-weight: bold; color: var(--primary);">
+            <textarea placeholder="Order Quantity (MT) and Destination Port" rows="5" required></textarea>
+            <button type="submit" class="submit-btn">GET A QUOTE</button>
+        </form>
+    </div>
+</section>
+
+<a href="https://wa.me/918849085600" class="floating-wa"><i class="fab fa-whatsapp"></i></a>
+
+<footer>
+    <div class="footer-logo">VRUNDA EXPORTER</div>
+    <p>Pure Indian Spices | Worldwide Delivery</p>
+    <div style="margin: 20px 0; font-size: 1.2rem;">
+        <i class="fab fa-facebook" style="margin: 0 10px;"></i>
+        <i class="fab fa-instagram" style="margin: 0 10px;"></i>
+        <i class="fab fa-linkedin" style="margin: 0 10px;"></i>
+    </div>
+    <hr style="opacity: 0.1; margin: 20px 0;">
+    <p style="font-size: 0.8rem; opacity: 0.6;">© 2026 Vrunda Exporter. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+
+function selectProduct(name) {
+    document.getElementById("product-input").value = name;
+    document.getElementById("inquiry-form").scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
