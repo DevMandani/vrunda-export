@@ -313,7 +313,8 @@
             <a href="https://wa.me/918849085600" class="action-icon wa-btn"><i class="fab fa-whatsapp"></i></a>
         </div>
 
-        <div class="menu-toggle" onclick="toggleMenu()">
+        <div class="menu-toggle" onclick
+        ="toggleMenu()">
             <i class="fas fa-bars"></i>
         </div>
     </div>
@@ -384,13 +385,17 @@
 <section class="section" id="inquiry-form">
     <div class="form-container">
         <h2>Global Inquiry Form</h2>
-        <form>
-            <input type="text" placeholder="Your Name / Company Name" required>
-            <input type="email" placeholder="Business Email" required>
-            <input type="text" id="product-input" placeholder="Selected Product" readonly style="border: 2px solid var(--accent); font-weight: bold; color: var(--primary);">
-            <textarea placeholder="Order Quantity (MT) and Destination Port" rows="5" required></textarea>
-            <button type="submit" class="submit-btn">GET A QUOTE</button>
-        </form>
+       <form  action="https://formspree.io/f/xzdaybae"
+  method="POST">
+    <input type="text" name="name" placeholder="Your Name / Company Name" required>
+    <input type="email" name="email" placeholder="Business Email" required>
+    
+    <input type="text" name="product" id="product-input" placeholder="Selected Product" readonly style="border: 2px solid var(--accent); font-weight: bold; color: var(--primary);">
+    
+    <textarea name="message" placeholder="Order Quantity (MT) and Destination Port" rows="5" required></textarea>
+    
+    <button type="submit" class="submit-btn">GET A QUOTE</button>
+</form>
     </div>
 </section>
 
